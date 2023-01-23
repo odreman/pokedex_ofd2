@@ -2,6 +2,16 @@
 
 Se trata de una Pokedex desarrollada en Flutter y Dart haciendo uso de la api oficial de pokemon PokeApi.
 
+## Video de demostración
+
+https://youtu.be/CqW0555qUbY
+
+## Capturas de pantallas 
+https://ibb.co/P979R6S
+
+## Repositorio git
+
+
 ## Paginas
 
 -Splash de loading
