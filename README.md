@@ -10,7 +10,7 @@ https://youtu.be/CqW0555qUbY
 https://ibb.co/P979R6S
 
 ## Repositorio git
-
+https://github.com/odreman/pokedex_ofd2.git
 
 ## Paginas
 
