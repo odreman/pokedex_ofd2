@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_ofd2/models/pokemon_details.dart';
 import 'package:pokedex_ofd2/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -16,15 +17,26 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('PokeApp OFD'),
+          title: const Text(
+            'Pokedex',
+            style: TextStyle(
+              fontFamily: 'PokemonSolid',
+              fontSize: 24,
+              color: Colors.white,
+              shadows: [],
+            ),
+          ),
           elevation: 0,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              //Tarjetas de opciones de busqueda
+              //Tarjetas de pokemon
               PokemonSwiper(
-                  pokemons: pokemonProvider.onPokemonsListWithDetails),
+                pokemons: pokemonProvider.onPokemonsListWithDetailsStream.value,
+                onNextPage: () => pokemonProvider.getPokemons(true),
+                maxItems: pokemonProvider.maxPokemons,
+              ),
 
               //Slider de Items
               PokemonItemsSlider(

@@ -16,19 +16,26 @@ class BarrySliderCardData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(
           height: 10,
         ),
         Row(
           children: [
+            const SizedBox(
+              width: 8,
+            ),
             ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Hero(
                   tag: 'berry#${pokemonBerrys.id}',
                   child: PokemonImageCache(
-                      imageURL: pokemonBerrys.sprites!, itemSize: 25),
+                      imageURL: pokemonBerrys.sprites!, itemSize: 35),
                 )),
+            const SizedBox(
+              width: 5,
+            ),
             Text(
               '#${pokemonBerrys.id} - ${pokemonBerrys.name.toUpperCase()}',
               style: textTheme.labelSmall,

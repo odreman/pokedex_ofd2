@@ -5,47 +5,57 @@ import 'package:pokedex_ofd2/widgets/pokemon/swiper/pokemon_swiper_card.dart';
 
 import '../../../models/pokemon_details.dart';
 
-class PokemonSwiper extends StatelessWidget {
+class PokemonSwiper extends StatefulWidget {
   final List<PokemonDetails> pokemons;
+  final Function onNextPage;
+  final int maxItems;
 
-  const PokemonSwiper({Key? key, required this.pokemons}) : super(key: key);
+  const PokemonSwiper({
+    Key? key,
+    required this.pokemons,
+    required this.onNextPage,
+    required this.maxItems,
+  }) : super(key: key);
+
+  @override
+  State<PokemonSwiper> createState() => _PokemonSwiperState();
+}
+
+class _PokemonSwiperState extends State<PokemonSwiper> {
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        widget.onNextPage();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    if (pokemons.isEmpty) {
-      return
-          /*
-          Container(
+    if (widget.pokemons.isEmpty) {
+      return Container(
+          margin: const EdgeInsets.only(top: 15),
           width: double.infinity,
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CircularProgressIndicator(
-                backgroundColor: Colors.grey,
-                valueColor: AlwaysStoppedAnimation(Colors.white),
-                strokeWidth: 10,
-              ),
-            ],
-          ));
-          */
-          Container(
-              margin: const EdgeInsets.only(top: 15),
-              width: double.infinity,
-              height: size.height * 0.6,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(80),
+          height: size.height * 0.6,
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(80),
+              child: Container(
+                  color: Colors.grey.shade200,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: Container(
-                      color: Colors.grey.shade200,
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
-                      child: Container(
-                          alignment: Alignment.bottomCenter,
-                          height: (size.height * 0.6) * .7,
-                          width: (size.width * 0.6) * .7,
-                          child: shimmerPokemonSwiper()))));
+                      alignment: Alignment.bottomCenter,
+                      height: (size.height * 0.6) * .7,
+                      width: (size.width * 0.6) * .7,
+                      child: shimmerPokemonSwiper()))));
     }
 
     return Container(
@@ -54,18 +64,35 @@ class PokemonSwiper extends StatelessWidget {
         height: size.height * 0.6,
         child: Column(children: [
           Swiper(
-            itemCount: pokemons.length,
+            itemCount: widget.pokemons.length + 1,
             layout: SwiperLayout.STACK,
             itemWidth: size.width * 0.93,
             itemHeight: size.height * 0.55,
             itemBuilder: (_, int index) {
-              final PokemonDetails pokemon = pokemons[index];
+              if (index < widget.pokemons.length) {
+                final PokemonDetails pokemon = widget.pokemons[index];
 
-              return GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'detailsPokemon',
-                    arguments: pokemon),
-                child: PokemonSwiperCard(pokemon: pokemon),
-              );
+                return GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, 'detailsPokemon',
+                      arguments: pokemon),
+                  child: PokemonSwiperCard(pokemon: pokemon),
+                );
+              } else if (widget.pokemons.length == widget.maxItems) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                  child: Center(
+                    child: Text('No more items'),
+                  ),
+                );
+              } else {
+                widget.onNextPage();
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
             },
           ),
           GestureDetector(

@@ -16,20 +16,22 @@ class ItemsSliderCardContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         Expanded(
           child: Row(
             children: [
+              const SizedBox(width: 8),
               ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Hero(
                     tag: 'item#${pokemonItems.id}',
                     child: PokemonImageCache(
                         imageURL: pokemonItems.sprites.spritesDefault!,
-                        itemSize: 30),
+                        itemSize: 40),
                   )),
               const SizedBox(
                 width: 10,
@@ -49,7 +51,7 @@ class ItemsSliderCardContents extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5, left: 2, right: 5),
+                padding: const EdgeInsets.only(top: 5, left: 5, right: 5),
                 child: Text(
                   'Category: ${pokemonItems.category.name.toLowerCase()}',
                   style: textTheme.labelSmall,

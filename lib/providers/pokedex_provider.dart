@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_ofd2/models/models.dart';
 import 'package:pokedex_ofd2/models/pokemon_evolution_chain.dart';
 import 'package:pokedex_ofd2/models/pokemon_species.dart';
+import 'package:rxdart/rxdart.dart';
 import '../models/pokemon_items_details.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
@@ -13,7 +14,13 @@ import '../models/pokemon_move_response.dart';
 class PokemonsProvider extends ChangeNotifier {
   final String _baseUrl = 'pokeapi.co';
 
+  List<Pokemon> originalPokemonList = [];
+  Map<int, PokemonDetails> pokemonDetailsMap = {};
+
   List<PokemonDetails> onPokemonsListWithDetails = [];
+  final onPokemonsListWithDetailsStream =
+      BehaviorSubject<List<PokemonDetails>>();
+
   int maxPokemonsListWithDetails = 0;
   List<PokemonItemsDetails> onPokemonItems = [];
   int maxonPokemonItems = 0;
@@ -103,14 +110,19 @@ class PokemonsProvider extends ChangeNotifier {
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/pokemon', _nextOffsetPokemons!);
       } else {
+        originalPokemonList.clear();
+        pokemonDetailsMap.clear();
         jsonData = await _getMapData('/api/v2/pokemon');
       }
-      //final pokemonResponse = PokemonResponse.fromJson(jsonData);
+
+      List<Pokemon> newPokemons = Pokemon.fromMapList(jsonData['results']);
+      originalPokemonList.addAll(newPokemons);
+
       final pokemonResponse = PokemonResponse.fromMap(jsonData);
       _nextOffsetPokemons = pokemonResponse.next;
       maxPokemons = pokemonResponse.count;
 
-      fillDetails(pokemonResponse.results);
+      fillDetails(newPokemons);
       notifyListeners();
 
       isLoadingPokemons = false;
@@ -129,21 +141,16 @@ class PokemonsProvider extends ChangeNotifier {
     }
   }
   */
-  fillDetails(List<Pokemon> results) async {
-    for (var element in results) {
-      if (int.parse(element.id) < maxItemPokemons) {
-        getDetails(element.url);
+  void fillDetails(List<Pokemon> newPokemons) async {
+    for (var i = 0; i < newPokemons.length; i++) {
+      if (int.parse(newPokemons[i].id) < maxItemPokemons) {
+        getDetails(
+            newPokemons[i].url, originalPokemonList.indexOf(newPokemons[i]));
       }
     }
   }
 
-  getDetails(String url) async {
-    //anterior con http
-    //final response = await http.get(Uri.parse(url));
-    //final PokemonDetails pokemonDetails =
-    //    PokemonDetails.fromJson(response.body);
-
-    //con Dio para cache
+  void getDetails(String url, int index) async {
     final response = await Dio().get(
       url,
       options: buildCacheOptions(
@@ -152,8 +159,14 @@ class PokemonsProvider extends ChangeNotifier {
     );
     final PokemonDetails pokemonDetails = PokemonDetails.fromMap(response.data);
 
-    onPokemonsListWithDetails.add(pokemonDetails);
-    notifyListeners();
+    pokemonDetailsMap[index] = pokemonDetails;
+
+    if (pokemonDetailsMap.length == originalPokemonList.length) {
+      onPokemonsListWithDetails = List<PokemonDetails>.generate(
+          originalPokemonList.length, (index) => pokemonDetailsMap[index]!);
+      onPokemonsListWithDetailsStream.add(onPokemonsListWithDetails);
+      notifyListeners();
+    }
   }
 
   void getPokemonItems([bool nextPage = false]) async {

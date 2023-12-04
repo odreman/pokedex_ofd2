@@ -33,7 +33,7 @@ class PokemonSwiperCard extends StatelessWidget {
             ),
             SizedBox(
                 width: double.infinity,
-                height: size.height * .145,
+                height: size.height * .150,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Column(

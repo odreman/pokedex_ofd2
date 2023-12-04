@@ -21,7 +21,7 @@ class ItemSliderCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(30),
       child: Container(
         color: PokemonColors.gallery,
-        width: size.width * 0.45,
+        width: size.width * 0.55,
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(
           onTap: onPress,

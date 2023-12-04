@@ -47,4 +47,8 @@ class Pokemon {
             ? '0$id'
             : id.toString();
   }
+
+  static List<Pokemon> fromMapList(List<dynamic> mapList) {
+    return mapList.map((map) => Pokemon.fromMap(map)).toList();
+  }
 }

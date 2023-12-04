@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_ofd2/models/pokemon_details.dart';
 import 'package:provider/provider.dart';
 import '../providers/pokedex_provider.dart';
 import '../widgets/pokemon/grid/pokemon_grid.dart';
@@ -17,7 +18,7 @@ class _PokemonsScreenState extends State<PokemonsScreen> {
         Provider.of<PokemonsProvider>(context, listen: true);
 
     return PokemonGrid(
-      pokemons: pokemonProvider.onPokemonsListWithDetails,
+      pokemons: pokemonProvider.onPokemonsListWithDetailsStream.value,
       onNextPage: () => pokemonProvider.getPokemons(true),
       maxItems: pokemonProvider.maxPokemons,
     );

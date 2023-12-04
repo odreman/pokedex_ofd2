@@ -12,7 +12,7 @@ dependencies:
     
 
   cupertino_icons: ^1.0.2
-  card_swiper : ^2.0.1
+  card_swiper : ^3.0.0
   http: ^0.13.5
   provider: ^6.0.5
   cached_network_image: ^3.2.3
@@ -21,6 +21,7 @@ dependencies:
   dio_http_cache: ^0.3.0
   dio: ^4.0.6
   shimmer: ^2.0.0
+  rxdart: ^0.27.2
   
 dev_dependencies:
   flutter_test:

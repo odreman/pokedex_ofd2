@@ -26,7 +26,7 @@ class BarrySliderCard extends StatelessWidget {
         highlightColor: Colors.grey.shade300,
         child: Container(
           color: PokemonColors.gallery,
-          width: 120,
+          width: 180,
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Stack(
             children: [

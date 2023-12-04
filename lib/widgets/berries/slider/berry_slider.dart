@@ -57,7 +57,7 @@ class _BerrySliderState extends State<BerrySlider> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 3),
       width: double.infinity,
-      height: size.height * 0.12,
+      height: size.height * 0.16,
       constraints: const BoxConstraints(minHeight: 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
