@@ -109,7 +109,12 @@ class PokemonsProvider extends ChangeNotifier {
 
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/pokemon', _nextOffsetPokemons!);
+        print("nextPage: " + nextPage.toString());
+        print("nextOffset: " + _nextOffsetPokemons.toString());
       } else {
+        print("nextPage: " + nextPage.toString());
+        print("nextOffset: " + _nextOffsetPokemons.toString());
+
         originalPokemonList.clear();
         pokemonDetailsMap.clear();
         jsonData = await _getMapData('/api/v2/pokemon');

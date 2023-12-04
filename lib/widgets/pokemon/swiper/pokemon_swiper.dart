@@ -22,18 +22,14 @@ class PokemonSwiper extends StatefulWidget {
 }
 
 class _PokemonSwiperState extends State<PokemonSwiper> {
-  final ScrollController scrollController = ScrollController();
+  static int _swiperIndex = 1;
+  static int _previousIndex = 1;
+  late SwiperController _controller;
 
   @override
   void initState() {
     super.initState();
-
-    scrollController.addListener(() {
-      if (scrollController.position.pixels ==
-          scrollController.position.maxScrollExtent) {
-        widget.onNextPage();
-      }
-    });
+    _controller = new SwiperController();
   }
 
   @override
@@ -64,10 +60,37 @@ class _PokemonSwiperState extends State<PokemonSwiper> {
         height: size.height * 0.6,
         child: Column(children: [
           Swiper(
+            controller: _controller,
             itemCount: widget.pokemons.length + 1,
             layout: SwiperLayout.STACK,
             itemWidth: size.width * 0.93,
             itemHeight: size.height * 0.55,
+            onIndexChanged: (index) {
+              bool isNavigatingBackwards = index < _previousIndex;
+              _previousIndex = index; // Actualizar el índice anterior
+              _swiperIndex = index + 1;
+
+              bool isAtStart = _swiperIndex == 1;
+              bool isNearEnd = _swiperIndex == widget.pokemons.length - 2;
+              bool isAtEnd = _swiperIndex == widget.pokemons.length + 1;
+              bool hasMoreItems = widget.pokemons.length < widget.maxItems;
+
+              if ((isNearEnd || isAtEnd) && hasMoreItems) {
+                widget.onNextPage();
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+
+              if (isAtStart && isNavigatingBackwards) {
+                _controller.stopAutoplay();
+              } else {
+                _controller.startAutoplay();
+              }
+            },
             itemBuilder: (_, int index) {
               if (index < widget.pokemons.length) {
                 final PokemonDetails pokemon = widget.pokemons[index];
@@ -85,7 +108,6 @@ class _PokemonSwiperState extends State<PokemonSwiper> {
                   ),
                 );
               } else {
-                widget.onNextPage();
                 return const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: Center(
