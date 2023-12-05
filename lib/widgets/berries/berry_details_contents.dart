@@ -44,7 +44,7 @@ class BerryDetailsContents extends StatelessWidget {
                   child: Container(
                       margin: const EdgeInsets.only(top: 15),
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * .12,
+                      height: MediaQuery.of(context).size.height * .15,
                       constraints: const BoxConstraints(minHeight: 100),
                       child: Column(children: [
                         Padding(
@@ -111,7 +111,7 @@ class BerryDetailsContents extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .10,
+                  height: MediaQuery.of(context).size.height * .15,
                   constraints: const BoxConstraints(minHeight: 90),
                   child: Column(
                     children: [
@@ -207,7 +207,7 @@ class BerryDetailsContents extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .10,
+                  height: MediaQuery.of(context).size.height * .15,
                   constraints: const BoxConstraints(minHeight: 90),
                   child: Column(
                     children: [
@@ -255,7 +255,7 @@ class BerryDetailsContents extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .10,
+                  height: MediaQuery.of(context).size.height * .15,
                   constraints: const BoxConstraints(minHeight: 90),
                   child: Column(
                     children: [
@@ -297,7 +297,7 @@ class BerryDetailsContents extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .09,
+                  height: MediaQuery.of(context).size.height * .12,
                   constraints: const BoxConstraints(minHeight: 70),
                   child: Column(
                     children: [

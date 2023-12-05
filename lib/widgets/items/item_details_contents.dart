@@ -26,7 +26,7 @@ class ItemDetailsContents extends StatelessWidget {
               child: Container(
                   margin: const EdgeInsets.only(top: 15),
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .12,
+                  height: MediaQuery.of(context).size.height * .15,
                   constraints: const BoxConstraints(minHeight: 100),
                   child: Column(children: [
                     Padding(
@@ -106,7 +106,7 @@ class ItemDetailsContents extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(top: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .12,
+              height: MediaQuery.of(context).size.height * .18,
               constraints: const BoxConstraints(minHeight: 110),
               child: Column(
                 children: [
@@ -164,7 +164,7 @@ class ItemDetailsContents extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(top: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .12,
+              height: MediaQuery.of(context).size.height * .15,
               constraints: const BoxConstraints(minHeight: 90),
               child: Column(
                 children: [
@@ -221,7 +221,7 @@ class ItemDetailsContents extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(top: 20),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .10,
+              height: MediaQuery.of(context).size.height * .11,
               constraints: const BoxConstraints(minHeight: 60),
               child: Column(
                 children: [
@@ -280,7 +280,7 @@ class ItemDetailsContents extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(top: 20),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .09,
+              height: MediaQuery.of(context).size.height * .12,
               constraints: const BoxConstraints(minHeight: 75),
               child: Column(
                 children: [

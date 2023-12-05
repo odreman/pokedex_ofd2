@@ -127,7 +127,7 @@ class DetailsContents extends StatelessWidget {
       SliverToBoxAdapter(
         child: Container(
           width: double.infinity,
-          height: size.height * 0.20,
+          height: size.height * 0.22,
           constraints: const BoxConstraints(minHeight: 160),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +154,7 @@ class DetailsContents extends StatelessWidget {
       SliverGrid(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
-          childAspectRatio: 2.3,
+          childAspectRatio: 2,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
@@ -170,7 +170,7 @@ class DetailsContents extends StatelessWidget {
       SliverGrid(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
-          childAspectRatio: 1.4,
+          childAspectRatio: 1.1,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
@@ -249,7 +249,7 @@ class DetailsContents extends StatelessWidget {
       SliverToBoxAdapter(
         child: Container(
           width: double.infinity,
-          height: size.height * 0.14,
+          height: size.height * 0.17,
           constraints: const BoxConstraints(minHeight: 120),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

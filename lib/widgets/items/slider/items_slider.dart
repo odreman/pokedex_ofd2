@@ -57,7 +57,7 @@ class _PokemonItemsSliderState extends State<PokemonItemsSlider> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 3),
       width: double.infinity,
-      height: size.height * 0.16,
+      height: size.height * 0.2,
       constraints: const BoxConstraints(minHeight: 120),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
