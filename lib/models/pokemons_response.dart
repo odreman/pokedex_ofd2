@@ -21,7 +21,7 @@ class PokemonResponse {
 
   factory PokemonResponse.fromMap(Map<String, dynamic> json) => PokemonResponse(
         count: json["count"],
-        next: json["next"] ?? null,
+        next: json["next"],
         previous: json["previous"],
         results:
             List<Pokemon>.from(json["results"].map((x) => Pokemon.fromMap(x))),
@@ -29,7 +29,7 @@ class PokemonResponse {
 
   Map<String, dynamic> toMap() => {
         "count": count,
-        "next": next ?? null,
+        "next": next,
         "previous": previous,
         "results": List<dynamic>.from(results.map((x) => x.toMap())),
       };

@@ -45,9 +45,9 @@ class _PokemonDetailsScreenState extends State<PokemonDetailsScreen> {
             return Container(
                 width: double.infinity,
                 color: colorsPokemon,
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     CircularProgressIndicator(
                       backgroundColor: Colors.grey,
                       valueColor: AlwaysStoppedAnimation(Colors.white),

@@ -29,7 +29,7 @@ class MoveDetailsContents extends StatelessWidget {
         final moveResponse = snapshot.data!;
 
         var flavorTextEntries = moveResponse.flavorTextEntries!
-            .where((x) => x!.language!.name == 'en')
+            .where((x) => x.language!.name == 'en')
             .toSet()
             .toList();
         flavorTextEntries = flavorTextEntries.toSet().toList();
@@ -62,7 +62,7 @@ class MoveDetailsContents extends StatelessWidget {
                             child: AnimatedSize(
                               duration: const Duration(milliseconds: 500),
                               child: Text(
-                                flavorTextEntries[0]!
+                                flavorTextEntries[0]
                                     .flavorText!
                                     .toString()
                                     .replaceAll('\n', ' '),

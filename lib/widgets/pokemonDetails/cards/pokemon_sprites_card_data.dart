@@ -32,7 +32,7 @@ class PokemonSpritesCardData extends StatelessWidget {
                   itemSize: 160, imageURL: pokemonSpritesUrl.url),
             )),
           ),
-          Column(children: const [
+          const Column(children: [
             Align(
               alignment: Alignment.topRight,
               child: Padding(

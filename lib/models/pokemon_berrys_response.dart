@@ -10,7 +10,7 @@ class PokemonBerrysResponse {
 
   int count;
   String? next;
-  dynamic? previous;
+  dynamic previous;
   List<PokemonBerrys> results;
 
   factory PokemonBerrysResponse.fromJson(String str) =>
@@ -21,7 +21,7 @@ class PokemonBerrysResponse {
   factory PokemonBerrysResponse.fromMap(Map<String, dynamic> json) =>
       PokemonBerrysResponse(
         count: json["count"],
-        next: json["next"] ?? null,
+        next: json["next"],
         previous: json["previous"],
         results: List<PokemonBerrys>.from(
             json["results"].map((x) => PokemonBerrys.fromMap(x))),
@@ -29,7 +29,7 @@ class PokemonBerrysResponse {
 
   Map<String, dynamic> toMap() => {
         "count": count,
-        "next": next ?? null,
+        "next": next,
         "previous": previous,
         "results": List<dynamic>.from(results.map((x) => x.toMap())),
       };

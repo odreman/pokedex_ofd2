@@ -74,7 +74,7 @@ class PokemonsProvider extends ChangeNotifier {
       'offset': '$offset',
     });
 
-    final response;
+    final Response response;
 
     if (urlNext == "") {
       //response = await http.get(url);
@@ -105,15 +105,15 @@ class PokemonsProvider extends ChangeNotifier {
     isRequestErrorPokemons = false;
 
     try {
-      final jsonData;
+      final Map jsonData;
 
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/pokemon', _nextOffsetPokemons!);
-        print("nextPage: " + nextPage.toString());
-        print("nextOffset: " + _nextOffsetPokemons.toString());
+        print("nextPage: $nextPage");
+        print("nextOffset: $_nextOffsetPokemons");
       } else {
-        print("nextPage: " + nextPage.toString());
-        print("nextOffset: " + _nextOffsetPokemons.toString());
+        print("nextPage: $nextPage");
+        print("nextOffset: $_nextOffsetPokemons");
 
         originalPokemonList.clear();
         pokemonDetailsMap.clear();
@@ -180,10 +180,10 @@ class PokemonsProvider extends ChangeNotifier {
     isLoadingItems = true;
     isRequestErrorItems = false;
 
-    print('parametro: ' + _nextOffsetItems.toString());
+    print('parametro: $_nextOffsetItems');
 
     try {
-      final jsonData;
+      final Map jsonData;
 
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/item', _nextOffsetItems!);
@@ -193,7 +193,7 @@ class PokemonsProvider extends ChangeNotifier {
       //final pokemonItemsResponse = PokemonItemsResponse.fromJson(jsonData);
       final pokemonItemsResponse = PokemonItemsResponse.fromMap(jsonData);
       _nextOffsetItems = pokemonItemsResponse.next;
-      print('_nextOffsetItems: ' + _nextOffsetItems.toString());
+      print('_nextOffsetItems: $_nextOffsetItems');
       maxPokemonItemsDetails = pokemonItemsResponse.count;
 
       fillDetailsItems(pokemonItemsResponse.results);
@@ -234,13 +234,13 @@ class PokemonsProvider extends ChangeNotifier {
   void getPokemonBerry([bool nextPage = false]) async {
     if (isLoadingBerrys || (nextPage && _nextOffsetBerrys == null)) return;
 
-    print('parametro: ' + _nextOffsetBerrys.toString());
+    print('parametro: $_nextOffsetBerrys');
 
     isLoadingBerrys = true;
     isRequestErrorBerrys = false;
 
     try {
-      final jsonData;
+      final Map jsonData;
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/berry', _nextOffsetBerrys!);
       } else {
@@ -250,7 +250,7 @@ class PokemonsProvider extends ChangeNotifier {
       //final pokemonBerrysResponse = PokemonBerrysResponse.fromJson(jsonData);
       final pokemonBerrysResponse = PokemonBerrysResponse.fromMap(jsonData);
       _nextOffsetBerrys = pokemonBerrysResponse.next;
-      print('_nextOffsetItems: ' + _nextOffsetItems.toString());
+      print('_nextOffsetItems: $_nextOffsetItems');
       maxPokemonBerrysDetails = pokemonBerrysResponse.count;
 
       fillBerrys(pokemonBerrysResponse.results);
@@ -390,7 +390,7 @@ class PokemonsProvider extends ChangeNotifier {
     isRequestErrorMoves = false;
 
     try {
-      final jsonData;
+      final Map jsonData;
 
       if (nextPage) {
         jsonData = await _getMapData('/api/v2/move', _nextOffsetMoves!);

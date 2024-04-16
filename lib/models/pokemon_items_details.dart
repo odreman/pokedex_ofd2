@@ -83,7 +83,7 @@ class PokemonItemsDetails {
             List<dynamic>.from(effectEntries.map((x) => x.toMap())),
         "flavor_text_entries":
             List<dynamic>.from(flavorTextEntries.map((x) => x.toMap())),
-        "fling_effect": flingEffect == null ? null : flingEffect!.toMap(),
+        "fling_effect": flingEffect?.toMap(),
         "fling_power": flingPower,
         "game_indices": List<dynamic>.from(gameIndices.map((x) => x.toMap())),
         "held_by_pokemon": List<dynamic>.from(heldByPokemon.map((x) => x)),
@@ -241,6 +241,6 @@ class Sprites {
       );
 
   Map<String, dynamic> toMap() => {
-        "default": spritesDefault == null ? null : spritesDefault,
+        "default": spritesDefault,
       };
 }

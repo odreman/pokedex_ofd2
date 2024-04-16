@@ -147,8 +147,8 @@ class PokemonDetails {
         "past_types": pastTypes == null
             ? null
             : List<dynamic>.from(pastTypes!.map((x) => x)),
-        "species": species == null ? null : species!.toMap(),
-        "sprites": sprites == null ? null : sprites!.toMap(),
+        "species": species?.toMap(),
+        "sprites": sprites?.toMap(),
         "stats": stats == null
             ? null
             : List<dynamic>.from(stats!.map((x) => x.toMap())),
@@ -182,7 +182,7 @@ class Ability {
       );
 
   Map<String, dynamic> toMap() => {
-        "ability": ability == null ? null : ability!.toMap(),
+        "ability": ability?.toMap(),
         "is_hidden": isHidden,
         "slot": slot,
       };
@@ -234,7 +234,7 @@ class HeldItem {
       );
 
   Map<String, dynamic> toMap() => {
-        "item": item == null ? null : item!.toMap(),
+        "item": item?.toMap(),
         "version_details": versionDetails == null
             ? null
             : List<dynamic>.from(versionDetails!.map((x) => x.toMap())),
@@ -263,7 +263,7 @@ class VersionDetail {
 
   Map<String, dynamic> toMap() => {
         "rarity": rarity,
-        "version": version == null ? null : version!.toMap(),
+        "version": version?.toMap(),
       };
 }
 
@@ -289,7 +289,7 @@ class Move {
       );
 
   Map<String, dynamic> toMap() => {
-        "move": move == null ? null : move!.toMap(),
+        "move": move?.toMap(),
         "version_group_details": versionGroupDetails == null
             ? null
             : List<dynamic>.from(versionGroupDetails!.map((x) => x.toMap())),
@@ -326,8 +326,8 @@ class VersionGroupDetail {
   Map<String, dynamic> toMap() => {
         "level_learned_at": levelLearnedAt,
         "move_learn_method":
-            moveLearnMethod == null ? null : moveLearnMethod!.toMap(),
-        "version_group": versionGroup == null ? null : versionGroup!.toMap(),
+            moveLearnMethod?.toMap(),
+        "version_group": versionGroup?.toMap(),
       };
 }
 
@@ -350,7 +350,7 @@ class GenerationV {
       );
 
   Map<String, dynamic> toMap() => {
-        "black-white": blackWhite == null ? null : blackWhite!.toMap(),
+        "black-white": blackWhite?.toMap(),
       };
 }
 
@@ -382,10 +382,10 @@ class GenerationIv {
       );
 
   Map<String, dynamic> toMap() => {
-        "diamond-pearl": diamondPearl == null ? null : diamondPearl!.toMap(),
+        "diamond-pearl": diamondPearl?.toMap(),
         "heartgold-soulsilver":
-            heartgoldSoulsilver == null ? null : heartgoldSoulsilver!.toMap(),
-        "platinum": platinum == null ? null : platinum!.toMap(),
+            heartgoldSoulsilver?.toMap(),
+        "platinum": platinum?.toMap(),
       };
 }
 
@@ -443,18 +443,18 @@ class Versions {
       );
 
   Map<String, dynamic> toMap() => {
-        "generation-i": generationI == null ? null : generationI!.toMap(),
-        "generation-ii": generationIi == null ? null : generationIi!.toMap(),
-        "generation-iii": generationIii == null ? null : generationIii!.toMap(),
-        "generation-iv": generationIv == null ? null : generationIv!.toMap(),
-        "generation-v": generationV == null ? null : generationV!.toMap(),
+        "generation-i": generationI?.toMap(),
+        "generation-ii": generationIi?.toMap(),
+        "generation-iii": generationIii?.toMap(),
+        "generation-iv": generationIv?.toMap(),
+        "generation-v": generationV?.toMap(),
         "generation-vi": generationVi == null
             ? null
             : Map.from(generationVi!)
                 .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "generation-vii": generationVii == null ? null : generationVii!.toMap(),
+        "generation-vii": generationVii?.toMap(),
         "generation-viii":
-            generationViii == null ? null : generationViii!.toMap(),
+            generationViii?.toMap(),
       };
 }
 
@@ -515,9 +515,9 @@ class Sprites {
         "front_female": frontFemale,
         "front_shiny": frontShiny,
         "front_shiny_female": frontShinyFemale,
-        "other": other == null ? null : other!.toMap(),
-        "versions": versions == null ? null : versions!.toMap(),
-        "animated": animated == null ? null : animated!.toMap(),
+        "other": other?.toMap(),
+        "versions": versions?.toMap(),
+        "animated": animated?.toMap(),
       };
 }
 
@@ -542,8 +542,8 @@ class GenerationI {
       );
 
   Map<String, dynamic> toMap() => {
-        "red-blue": redBlue == null ? null : redBlue!.toMap(),
-        "yellow": yellow == null ? null : yellow!.toMap(),
+        "red-blue": redBlue?.toMap(),
+        "yellow": yellow?.toMap(),
       };
 }
 
@@ -611,9 +611,9 @@ class GenerationIi {
       );
 
   Map<String, dynamic> toMap() => {
-        "crystal": crystal == null ? null : crystal!.toMap(),
-        "gold": gold == null ? null : gold!.toMap(),
-        "silver": silver == null ? null : silver!.toMap(),
+        "crystal": crystal?.toMap(),
+        "gold": gold?.toMap(),
+        "silver": silver?.toMap(),
       };
 }
 
@@ -729,10 +729,10 @@ class GenerationIii {
       );
 
   Map<String, dynamic> toMap() => {
-        "emerald": emerald == null ? null : emerald!.toMap(),
+        "emerald": emerald?.toMap(),
         "firered-leafgreen":
-            fireredLeafgreen == null ? null : fireredLeafgreen!.toMap(),
-        "ruby-sapphire": rubySapphire == null ? null : rubySapphire!.toMap(),
+            fireredLeafgreen?.toMap(),
+        "ruby-sapphire": rubySapphire?.toMap(),
       };
 }
 
@@ -814,9 +814,9 @@ class GenerationVii {
       );
 
   Map<String, dynamic> toMap() => {
-        "icons": icons == null ? null : icons!.toMap(),
+        "icons": icons?.toMap(),
         "ultra-sun-ultra-moon":
-            ultraSunUltraMoon == null ? null : ultraSunUltraMoon!.toMap(),
+            ultraSunUltraMoon?.toMap(),
       };
 }
 
@@ -827,7 +827,7 @@ class DreamWorld {
   });
 
   String? frontDefault;
-  dynamic? frontFemale;
+  dynamic frontFemale;
 
   factory DreamWorld.fromJson(String str) =>
       DreamWorld.fromMap(json.decode(str));
@@ -862,7 +862,7 @@ class GenerationViii {
       );
 
   Map<String, dynamic> toMap() => {
-        "icons": icons == null ? null : icons!.toMap(),
+        "icons": icons?.toMap(),
       };
 }
 
@@ -892,10 +892,10 @@ class Other {
       );
 
   Map<String, dynamic> toMap() => {
-        "dream_world": dreamWorld == null ? null : dreamWorld!.toMap(),
-        "home": home == null ? null : home!.toMap(),
+        "dream_world": dreamWorld?.toMap(),
+        "home": home?.toMap(),
         "official-artwork":
-            officialArtwork == null ? null : officialArtwork!.toMap(),
+            officialArtwork?.toMap(),
       };
 }
 
@@ -944,7 +944,7 @@ class Stat {
   Map<String, dynamic> toMap() => {
         "base_stat": baseStat,
         "effort": effort,
-        "stat": stat == null ? null : stat!.toMap(),
+        "stat": stat?.toMap(),
       };
 }
 
@@ -968,6 +968,6 @@ class Type {
 
   Map<String, dynamic> toMap() => {
         "slot": slot,
-        "type": type == null ? null : type!.toMap(),
+        "type": type?.toMap(),
       };
 }

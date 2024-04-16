@@ -66,9 +66,9 @@ class PokemonSpecies {
 
   factory PokemonSpecies.fromMap(Map<String, dynamic> json) => PokemonSpecies(
         baseHappiness:
-            json["base_happiness"] == null ? null : json["base_happiness"]!,
+            json["base_happiness"],
         captureRate:
-            json["capture_rate"] == null ? null : json["capture_rate"]!,
+            json["capture_rate"],
         color:
             json["color"] == null ? null : ColorSpecie.fromMap(json["color"]!),
         eggGroups: json["egg_groups"] == null
@@ -86,8 +86,8 @@ class PokemonSpecies {
         formDescriptions: json["form_descriptions"] == null
             ? null
             : List<dynamic>.from(json["form_descriptions"].map((x) => x)),
-        formsSwitchable: json["forms_switchable"] ?? null,
-        genderRate: json["gender_rate"] == null ? null : json["gender_rate"],
+        formsSwitchable: json["forms_switchable"],
+        genderRate: json["gender_rate"],
         genera: json["genera"] == null
             ? null
             : List<Genus>.from(json["genera"].map((x) => Genus.fromMap(x))),
@@ -100,20 +100,18 @@ class PokemonSpecies {
         habitat: json["habitat"] == null
             ? null
             : ColorSpecie.fromMap(json["habitat"]),
-        hasGenderDifferences: json["has_gender_differences"] == null
-            ? null
-            : json["has_gender_differences"],
+        hasGenderDifferences: json["has_gender_differences"],
         hatchCounter:
-            json["hatch_counter"] == null ? null : json["hatch_counter"],
-        id: json["id"] == null ? null : json["id"],
-        isBaby: json["is_baby"] == null ? null : json["is_baby"],
-        isLegendary: json["is_legendary"] == null ? null : json["is_legendary"],
-        isMythical: json["is_mythical"] == null ? null : json["is_mythical"],
-        name: json["name"] == null ? null : json["name"],
+            json["hatch_counter"],
+        id: json["id"],
+        isBaby: json["is_baby"],
+        isLegendary: json["is_legendary"],
+        isMythical: json["is_mythical"],
+        name: json["name"],
         names: json["names"] == null
             ? null
             : List<Name>.from(json["names"].map((x) => Name.fromMap(x))),
-        order: json["order"] == null ? null : json["order"],
+        order: json["order"],
         palParkEncounters: json["pal_park_encounters"] == null
             ? null
             : List<PalParkEncounter>.from(json["pal_park_encounters"]
@@ -131,14 +129,14 @@ class PokemonSpecies {
       );
 
   Map<String, dynamic> toMap() => {
-        "base_happiness": baseHappiness == null ? null : baseHappiness,
-        "capture_rate": captureRate == null ? null : captureRate,
-        "color": color == null ? null : color!.toMap(),
+        "base_happiness": baseHappiness,
+        "capture_rate": captureRate,
+        "color": color?.toMap(),
         "egg_groups": eggGroups == null
             ? null
             : List<dynamic>.from(eggGroups!.map((x) => x.toMap())),
         "evolution_chain":
-            evolutionChain == null ? null : evolutionChain!.toMap(),
+            evolutionChain?.toMap(),
         "evolves_from_species": evolvesFromSpecies,
         "flavor_text_entries": flavorTextEntries == null
             ? null
@@ -146,33 +144,33 @@ class PokemonSpecies {
         "form_descriptions": formDescriptions == null
             ? null
             : List<dynamic>.from(formDescriptions!.map((x) => x)),
-        "forms_switchable": formsSwitchable == null ? null : formsSwitchable,
-        "gender_rate": genderRate == null ? null : genderRate,
+        "forms_switchable": formsSwitchable,
+        "gender_rate": genderRate,
         "genera": genera == null
             ? null
             : List<dynamic>.from(genera!.map((x) => x.toMap())),
-        "generation": generation == null ? null : generation!.toMap(),
-        "growth_rate": growthRate == null ? null : growthRate!.toMap(),
-        "habitat": habitat == null ? null : habitat!.toMap(),
+        "generation": generation?.toMap(),
+        "growth_rate": growthRate?.toMap(),
+        "habitat": habitat?.toMap(),
         "has_gender_differences":
-            hasGenderDifferences == null ? null : hasGenderDifferences,
-        "hatch_counter": hatchCounter == null ? null : hatchCounter,
-        "id": id == null ? null : id,
-        "is_baby": isBaby == null ? null : isBaby,
-        "is_legendary": isLegendary == null ? null : isLegendary,
-        "is_mythical": isMythical == null ? null : isMythical,
-        "name": name == null ? null : name,
+            hasGenderDifferences,
+        "hatch_counter": hatchCounter,
+        "id": id,
+        "is_baby": isBaby,
+        "is_legendary": isLegendary,
+        "is_mythical": isMythical,
+        "name": name,
         "names": names == null
             ? null
             : List<dynamic>.from(names!.map((x) => x.toMap())),
-        "order": order == null ? null : order,
+        "order": order,
         "pal_park_encounters": palParkEncounters == null
             ? null
             : List<dynamic>.from(palParkEncounters!.map((x) => x.toMap())),
         "pokedex_numbers": pokedexNumbers == null
             ? null
             : List<dynamic>.from(pokedexNumbers!.map((x) => x.toMap())),
-        "shape": shape == null ? null : shape!.toMap(),
+        "shape": shape?.toMap(),
         "varieties": varieties == null
             ? null
             : List<dynamic>.from(varieties!.map((x) => x.toMap())),
@@ -194,13 +192,13 @@ class ColorSpecie {
   String toJson() => json.encode(toMap());
 
   factory ColorSpecie.fromMap(Map<String, dynamic> json) => ColorSpecie(
-        name: json["name"] == null ? null : json["name"]!,
-        url: json["url"] == null ? null : json["url"]!,
+        name: json["name"],
+        url: json["url"],
       );
 
   Map<String, dynamic> toMap() => {
-        "name": name == null ? null : name,
-        "url": url == null ? null : url,
+        "name": name,
+        "url": url,
       };
 }
 
@@ -217,11 +215,11 @@ class EvolutionChain {
   String toJson() => json.encode(toMap());
 
   factory EvolutionChain.fromMap(Map<String, dynamic> json) => EvolutionChain(
-        url: json["url"] == null ? null : json["url"],
+        url: json["url"],
       );
 
   Map<String, dynamic> toMap() => {
-        "url": url == null ? null : url,
+        "url": url,
       };
 }
 
@@ -242,7 +240,7 @@ class FlavorTextEntry {
   String toJson() => json.encode(toMap());
 
   factory FlavorTextEntry.fromMap(Map<String, dynamic> json) => FlavorTextEntry(
-        flavorText: json["flavor_text"] == null ? null : json["flavor_text"],
+        flavorText: json["flavor_text"],
         language: json["language"] == null
             ? null
             : ColorSpecie.fromMap(json["language"]),
@@ -252,9 +250,9 @@ class FlavorTextEntry {
       );
 
   Map<String, dynamic> toMap() => {
-        "flavor_text": flavorText == null ? null : flavorText,
-        "language": language == null ? null : language!.toMap(),
-        "version": version == null ? null : version!.toMap(),
+        "flavor_text": flavorText,
+        "language": language?.toMap(),
+        "version": version?.toMap(),
       };
 }
 
@@ -272,15 +270,15 @@ class Genus {
   String toJson() => json.encode(toMap());
 
   factory Genus.fromMap(Map<String, dynamic> json) => Genus(
-        genus: json["genus"] == null ? null : json["genus"],
+        genus: json["genus"],
         language: json["language"] == null
             ? null
             : ColorSpecie.fromMap(json["language"]),
       );
 
   Map<String, dynamic> toMap() => {
-        "genus": genus == null ? null : genus,
-        "language": language == null ? null : language!.toMap(),
+        "genus": genus,
+        "language": language?.toMap(),
       };
 }
 
@@ -301,12 +299,12 @@ class Name {
         language: json["language"] == null
             ? null
             : ColorSpecie.fromMap(json["language"]),
-        name: json["name"] == null ? null : json["name"]!,
+        name: json["name"],
       );
 
   Map<String, dynamic> toMap() => {
-        "language": language == null ? null : language!.toMap(),
-        "name": name ?? null,
+        "language": language?.toMap(),
+        "name": name,
       };
 }
 
@@ -329,14 +327,14 @@ class PalParkEncounter {
   factory PalParkEncounter.fromMap(Map<String, dynamic> json) =>
       PalParkEncounter(
         area: json["area"] == null ? null : ColorSpecie.fromMap(json["area"]),
-        baseScore: json["base_score"] == null ? null : json["base_score"]!,
-        rate: json["rate"] == null ? null : json["rate"]!,
+        baseScore: json["base_score"],
+        rate: json["rate"],
       );
 
   Map<String, dynamic> toMap() => {
-        "area": area == null ? null : area!.toMap(),
-        "base_score": baseScore ?? null,
-        "rate": rate ?? null,
+        "area": area?.toMap(),
+        "base_score": baseScore,
+        "rate": rate,
       };
 }
 
@@ -356,15 +354,15 @@ class PokedexNumber {
 
   factory PokedexNumber.fromMap(Map<String, dynamic> json) => PokedexNumber(
         entryNumber:
-            json["entry_number"] == null ? null : json["entry_number"]!,
+            json["entry_number"],
         pokedex: json["pokedex"] == null
             ? null
             : ColorSpecie.fromMap(json["pokedex"]),
       );
 
   Map<String, dynamic> toMap() => {
-        "entry_number": entryNumber ?? null,
-        "pokedex": pokedex == null ? null : pokedex!.toMap(),
+        "entry_number": entryNumber,
+        "pokedex": pokedex?.toMap(),
       };
 }
 
@@ -382,14 +380,14 @@ class Variety {
   String toJson() => json.encode(toMap());
 
   factory Variety.fromMap(Map<String, dynamic> json) => Variety(
-        isDefault: json["is_default"] == null ? null : json["is_default"]!,
+        isDefault: json["is_default"],
         pokemon: json["pokemon"] == null
             ? null
             : ColorSpecie.fromMap(json["pokemon"]),
       );
 
   Map<String, dynamic> toMap() => {
-        "is_default": isDefault ?? null,
-        "pokemon": pokemon == null ? null : pokemon!.toMap(),
+        "is_default": isDefault,
+        "pokemon": pokemon?.toMap(),
       };
 }
